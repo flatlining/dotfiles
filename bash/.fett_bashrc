@@ -1,0 +1,71 @@
+# Called by ~/.bashrc by:
+#if [ -f ~/<location>/.fett_bashrc ]; then
+#    . ~/<location>/.fett_bashrc
+#fi
+# at the and of ~/.bashrc
+# by mschertel@gmail.com for ubuntu
+
+# Prompt with git branch name
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "(\033[1;31m%s\033[m)")\$ '
+
+# Aliases
+alias cdd='cd ~/devel/'
+
+function ungit(){
+  # ungit the current directory
+  if [ -d ".git" ]
+  then
+    echo "$(pwd) is not a git repository anymore..."
+    rm -rf .git
+  else
+    echo "$(pwd) is not a git repository!"
+  fi
+}
+
+function tarc(){
+  # tar $[2-*] in $1 file
+  if [ $# -lt 2 ]
+  then
+    # Error, syntax 
+    echo "Error, use: tarc <file[.tgz]> <files/directory>"
+  else
+    # No extension, add it
+    if [ ${1/*./} != "tgz" ]
+    then
+      file="${1}.tgz"
+    else
+      file="${1}"
+    fi
+    # Error, file already exist
+    if [ -f $file ]
+    then
+      echo "Error, ${file} already exists!"
+    else
+      echo "Creating ${file}:"
+      tar -czvf $file ${@:2:$#-1}
+      echo "Done!"
+    fi
+  fi
+}
+
+function tard(){
+  # detar $1 in $2 or current directory
+  if [ $# -lt 1 ]
+  then
+    # Error, syntax 
+    echo "Error, use: tarx <file.tgz> [destiny]"
+  else
+    if [ -f $1 ]
+    then
+      echo "Deflating ${1}:"
+      tar -xzvf $1 $2
+      echo "Done!"
+    else
+      echo "Error, ${1} dont exist"
+    fi
+  fi
+}
