@@ -14,6 +14,8 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]@\h\[\033[00m\]:\[\033[01;
 
 # Aliases
 alias cdd='cd ~/devel/'
+alias cls='clear'
+alias github='firefox -new-tab "https://github.com/"'
 
 function ungit(){
   # ungit the current directory

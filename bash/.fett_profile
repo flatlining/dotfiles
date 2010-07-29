@@ -15,3 +15,5 @@ fi
 export RUBYLIB=$HOME/Applications/rubygems/lib
 export GEM_HOME=$HOME/Applications/rubygems/gems
 export PATH=$HOME/Applications/rubygems/bin:$GEM_HOME/bin:$PATH
+# Python modules
+export PYTHONPATH=$PYTHONPATH:$HOME/Applications/python/
