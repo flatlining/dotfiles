@@ -6,14 +6,16 @@
 # by mschertel@gmail.com for ubuntu
 
 # Add custom bin directory
-if [ -d "$HOME/devel/dotfiles/bin" ] ; then
+if [ -d "$HOME/devel/dotfiles/bin" ]; then
     PATH="$HOME/devel/dotfiles/bin:$PATH"
 fi
 
-# Environment variables
-# Gems location
-export RUBYLIB=$HOME/Applications/rubygems/lib
-export GEM_HOME=$HOME/Applications/rubygems/gems
-export PATH=$HOME/Applications/rubygems/bin:$GEM_HOME/bin:$PATH
-# Python modules
-export PYTHONPATH=$PYTHONPATH:$HOME/Applications/python/lib/python2.6/site-packages
+# Pip will only work with virtualenv
+#export PIP_REQUIRE_VIRTUALENV=true
+# and will automatically intall in the active one
+#export PIP_RESPECT_VIRTUALENV=true
+
+# Devel - Python / Ruby
+if [ -f ~/devel/dotfiles/bash/.fett_devel ]; then
+    . ~/devel/dotfiles/bash/.fett_devel
+fi
