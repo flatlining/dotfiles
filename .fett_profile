@@ -1,14 +1,10 @@
 # Called by ~/.profile by:
-#if [ -f ~/<location>/.fett_profile ]; then
-#    . ~/<location>/.fett_profile
-#fi
+# [[ -s "$HOME/<location>/.fett_profile" ]] && source "$HOME/<location>/.fett_profile"
 # at the and of ~/.profile
 # by mschertel@gmail.com for ubuntu
 
 # Add custom bin directory
-if [ -d "$HOME/devel/dotfiles/bin" ]; then
-    PATH="$HOME/devel/dotfiles/bin:$PATH"
-fi
+[[ -d "$HOME/devel/dotfiles/bin" ]] && PATH="$HOME/devel/dotfiles/bin:$PATH"
 
 # Pip will only work with virtualenv
 #export PIP_REQUIRE_VIRTUALENV=true
@@ -16,6 +12,4 @@ fi
 #export PIP_RESPECT_VIRTUALENV=true
 
 # Devel - Python / Ruby
-if [ -f ~/devel/dotfiles/bash/.fett_devel ]; then
-    . ~/devel/dotfiles/bash/.fett_devel
-fi
+[[ -s "$HOME/devel/dotfiles/bash/.fett_devel" ]] && source "$HOME/devel/dotfiles/bash/.fett_devel"

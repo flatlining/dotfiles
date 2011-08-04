@@ -1,18 +1,16 @@
-# Called by .fett_bashrc & .fett_profile by:
+# Called by .fett_bashrc & .fett_profile.
 # by mschertel@gmail.com for ubuntu
 
 # Python environments for virtualenvwrapper
 # http://www.doughellmann.com/docs/virtualenvwrapper/
 # http://www.doughellmann.com/articles/pythonmagazine/completely-different/2008-05-virtualenvwrapper/
-export WORKON_HOME=~/Applications/pyEnvs
-if [ -s /usr/local/bin/virtualenvwrapper.sh ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
+#export WORKON_HOME="$HOME/.pyEnvs/"
+#[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
 
 # Loads RVM into a shell session
-# http://rvm.beginrescueend.com/rvm/install/
-# http://barenko.wordpress.com/2010/01/19/preparando-o-ubuntu-para-multiplos-ambientes-ruby-utilizando-rvm/
-# http://ruby.about.com/od/rubyversionmanager/ss/installrvmlinux.htm
-if [[ -s $HOME/.rvm/scripts/rvm ]]; then
-    source $HOME/.rvm/scripts/rvm
-fi
+# http://coding.smashingmagazine.com/2011/06/21/set-up-an-ubuntu-local-development-machine-for-ruby-on-rails/
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Loads Pythonbrew into a shell session
+# https://github.com/utahta/pythonbrew
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
